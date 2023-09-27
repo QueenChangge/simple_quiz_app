@@ -31,12 +31,20 @@ class _QuizState extends State<Quiz> {
 
   @override
   Widget build(context) {
+    //kita bisa tambah final variabel disini
+    // final screenWidget = activeScreen == 'start-screen' //ternary
+    //     ? LandingContainer(switchWidget)
+    //     : const QuestionScreen();
+
+    Widget screenWidget = LandingContainer(switchWidget);
+    if (activeScreen == 'question-screen') {
+      screenWidget = const QuestionScreen();
+    }
+
     return MaterialApp(
       // home: Scaffold(body: activeScreen), //initstate
       home: Scaffold(
-        body: activeScreen == 'start-screen' //ternary
-            ? LandingContainer(switchWidget)
-            : const QuestionScreen(),
+        body: screenWidget,
       ),
     );
   }
