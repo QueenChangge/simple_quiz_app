@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class LandingContainer extends StatelessWidget {
-  const LandingContainer({super.key});
+  const LandingContainer(this.startQuiz, {super.key});
 
+  final void Function() startQuiz; //startquiz adalah tipe fungsi dart
+  
   @override
   Widget build(context) {
     return Container(
@@ -49,9 +51,7 @@ class LandingContainer extends StatelessWidget {
             //     child: const Text('Start Quiz'))
 
             OutlinedButton.icon(
-                onPressed: () {
-                  print('click');
-                },
+                onPressed: startQuiz,
                 style: OutlinedButton.styleFrom(
                   foregroundColor: Colors.white,
                 ),
