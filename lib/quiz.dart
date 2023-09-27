@@ -12,26 +12,32 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  //perubah page
-  Widget? activeScreen;
+  // //perubah page - init state
+  // Widget? activeScreen;
 
-  @override
-  void initState() { // inisialisasi tambahan
-    //disediakan oleh state class
-    activeScreen = LandingContainer(switchWidget);
-    super.initState(); //mengingatkan parent bahwa ada initstate
-  }
+  // @override
+  // void initState() { // inisialisasi tambahan
+  //   //disediakan oleh state class
+  //   activeScreen = LandingContainer(switchWidget);
+  //   super.initState(); //mengingatkan parent bahwa ada initstate
+  // }
+  var activeScreen = 'start-screen';
 
   void switchWidget() {
     setState(() {
-      activeScreen = const QuestionScreen();
+      activeScreen = 'question-screen';
     });
   }
 
   @override
   Widget build(context) {
     return MaterialApp(
-      home: Scaffold(body: activeScreen),
+      // home: Scaffold(body: activeScreen), //initstate
+      home: Scaffold(
+        body: activeScreen == 'start-screen' //ternary
+            ? LandingContainer(switchWidget)
+            : const QuestionScreen(),
+      ),
     );
   }
 }
